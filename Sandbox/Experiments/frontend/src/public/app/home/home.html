@@ -1,0 +1,136 @@
+<header class="header">
+  <div class="logo">
+    <h1>Caminando Online</h1>
+  </div>
+  <div class="auth-buttons">
+    <button class="btn-login" routerLink="/public/login">Ingresar</button>
+    <button class="btn-register" routerLink="/public/register">Registrarse</button>
+  </div>
+</header>
+
+<main class="main-content">
+  <!-- Indicador de progreso -->
+  <div class="progress-indicator" *ngIf="currentSection !== 'supermarket'">
+    <div class="progress-steps">
+      <div class="step completed">
+        <span class="step-number">1</span>
+        <span class="step-label">Supermercado</span>
+      </div>
+      <div class="step-connector active"></div>
+      <div class="step" [class.active]="currentSection === 'categories'" [class.completed]="currentSection === 'products' || currentSection === 'cart'">
+        <span class="step-number">2</span>
+        <span class="step-label">Categoría</span>
+      </div>
+      <div class="step-connector" [class.active]="currentSection === 'products' || currentSection === 'cart'"></div>
+      <div class="step" [class.active]="currentSection === 'products'" [class.completed]="currentSection === 'cart'">
+        <span class="step-number">3</span>
+        <span class="step-label">Productos</span>
+      </div>
+      <div class="step-connector" [class.active]="currentSection === 'cart'"></div>
+      <div class="step" [class.active]="currentSection === 'cart'">
+        <span class="step-number">4</span>
+        <span class="step-label">Carrito</span>
+      </div>
+    </div>
+  </div>
+  <!-- Contenedor de contenido dinámico -->
+  <div class="dynamic-content">
+    <!-- Sección 1: Selección de Supermercado -->
+    <section class="section supermarket-section" *ngIf="currentSection === 'supermarket'">
+      <div class="section-header">
+        <h2>Selecciona tu Supermercado</h2>
+        <p>Elige dónde quieres hacer tu compra</p>
+      </div>
+      <div class="buttons-grid">
+        <button
+          class="supermarket-btn"
+          *ngFor="let supermarket of supermarkets"
+          (click)="selectSupermarket(supermarket)">
+          <span class="supermarket-logo">{{ supermarket.logo }}</span>
+          <span class="supermarket-name">{{ supermarket.name }}</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- Sección 2: Selección de Categoría -->
+    <section class="section category-section" *ngIf="currentSection === 'categories'">
+      <div class="section-header">
+        <div class="section-nav">
+          <button class="btn-back" (click)="goBack()">← Volver</button>
+          <span class="selected-supermarket">{{ selectedSupermarket?.name }}</span>
+        </div>
+        <h2>¿Qué necesitas comprar?</h2>
+        <p>Selecciona una categoría de productos</p>
+      </div>
+      <div class="buttons-grid">
+        <button
+          class="category-btn"
+          *ngFor="let category of categories"
+          (click)="selectCategory(category)">
+          {{ category }}
+        </button>
+      </div>
+    </section>
+
+    <!-- Sección 3: Selección de Productos -->
+    <section class="section products-section" *ngIf="currentSection === 'products'">
+      <div class="section-header">
+        <div class="section-nav">
+          <button class="btn-back" (click)="goBack()">← Volver</button>
+          <span class="selected-info">{{ selectedSupermarket?.name }} > {{ selectedCategory }}</span>
+        </div>
+        <h2>Selecciona tus productos</h2>
+        <div class="cart-info" *ngIf="cart.length > 0">
+          <button class="btn-cart" (click)="goToCart()">
+            🛒 Carrito ({{ cart.length }}) - ${{ getTotalPrice() }}
+          </button>
+        </div>
+      </div>
+      <div class="products-grid">
+        <div
+          class="product-card"
+          *ngFor="let product of getFilteredProducts()">
+          <h3>{{ product.name }}</h3>
+          <p class="price">${{ product.price }}</p>
+          <button
+            class="btn-add"
+            (click)="addToCart(product)">
+            Agregar al carrito
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección 4: Carrito de Compras -->
+    <section class="section cart-section" *ngIf="currentSection === 'cart'">
+      <div class="section-header">
+        <div class="section-nav">
+          <button class="btn-back" (click)="goBack()">← Continuar comprando</button>
+          <h2>Tu Carrito de Compras</h2>
+        </div>
+      </div>
+      <div class="cart-content">
+        <div class="cart-items" *ngIf="cart.length > 0; else emptyCart">
+          <div class="cart-item" *ngFor="let item of cart">
+            <span class="item-name">{{ item.name }}</span>
+            <span class="item-price">${{ item.price }}</span>
+          </div>
+          <div class="cart-total">
+            <strong>Total: ${{ getTotalPrice() }}</strong>
+          </div>
+          <button class="btn-checkout">Proceder al pago</button>
+        </div>
+        <ng-template #emptyCart>
+          <div class="empty-cart">
+            <p>Tu carrito está vacío</p>
+            <button class="btn-continue" (click)="goBack()">Continuar comprando</button>
+          </div>
+        </ng-template>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer class="footer">
+  <p>&copy; 2025 Caminando Online. Todos los derechos reservados.</p>
+</footer>

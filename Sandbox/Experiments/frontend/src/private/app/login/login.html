@@ -1,0 +1,40 @@
+<div class="private-login-container">
+  <div class="login-header">
+    <h2>Acceso Privado - Caminando Online</h2>
+    <p>Panel de administración</p>
+  </div>
+
+  <form class="login-form" (ngSubmit)="onLogin()">
+    <div class="form-group">
+      <label for="email">Correo electrónico</label>
+      <input
+        type="email"
+        id="email"
+        [(ngModel)]="email"
+        name="email"
+        required
+        placeholder="admin@caminandoonline.com"
+      >
+    </div>
+
+    <div class="form-group">
+      <label for="password">Contraseña</label>
+      <input
+        type="password"
+        id="password"
+        [(ngModel)]="password"
+        name="password"
+        required
+        placeholder="••••••••"
+      >
+    </div>
+
+    <button type="submit" class="login-btn">Iniciar Sesión</button>
+  </form>
+
+  <div class="login-footer">
+    <button type="button" class="back-btn" (click)="navigateToPublic()">
+      ← Volver al sitio público
+    </button>
+  </div>
+</div>
