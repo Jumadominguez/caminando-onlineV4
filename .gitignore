@@ -1,0 +1,8 @@
+Sandbox/Debug/
+Sandbox/Temps/
+venv/
+node_modules/
+__pycache__/
+*.log
+tests/
+.env
