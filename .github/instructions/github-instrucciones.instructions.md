@@ -52,6 +52,86 @@ Usa mensajes descriptivos y estandarizados para identificar fácilmente el proce
 - `git reset --soft <commit>`: Deshacer commit pero mantener cambios.
 - `git reset --hard <commit>`: Deshacer commit y cambios (usar con cuidado).
 
+## Sistema de Versionado
+
+El versionado es fundamental en el desarrollo y debe estar **siempre al inicio de cada commit**. Utilizamos Conventional Commits para mantener consistencia y facilitar la automatización.
+
+### Formato de Versionado en Commits
+
+**IMPORTANTE**: El versionado debe aparecer **AL INICIO** de cada mensaje de commit:
+
+```
+[TIPO-NÚMERO] Descripción del cambio
+```
+
+### Tipos de Versionado
+
+- **[FEAT-NNN]**: Nueva funcionalidad implementada
+- **[FIX-NNN]**: Corrección de bugs o errores
+- **[REFACTOR-NNN]**: Mejora del código sin cambiar funcionalidad
+- **[DOC-NNN]**: Cambios en documentación
+- **[TEST-NNN]**: Agregar o modificar tests
+- **[STYLE-NNN]**: Cambios de estilo/formateo
+- **[CHORE-NNN]**: Tareas de mantenimiento
+- **[CHECKPOINT-NNN]**: Punto de guardado en desarrollo
+- **[MERGE-NNN]**: Integración de branches
+
+### Números de Versionado
+
+- **Contador incremental**: Cada tipo mantiene su propio contador
+- **Por feature/branch**: Reinicia contador en branches específicas
+- **Archivo de referencia**: Mantén `docs/commit-counter.txt` actualizado
+- **Ejemplos**:
+  - Primera feature: `[FEAT-001]`
+  - Segundo fix: `[FIX-002]`
+  - Primera refactorización: `[REFACTOR-001]`
+
+### Versionado Semántico (Semantic Versioning)
+
+Complementamos con versionado semántico para releases:
+
+- **MAJOR** (X.0.0): Cambios incompatibles
+- **MINOR** (X.Y.0): Nuevas funcionalidades compatibles
+- **PATCH** (X.Y.Z): Correcciones de bugs
+
+### Ejemplos de Commits con Versionado
+
+```bash
+# ✅ Correcto - Versionado al inicio
+[FEAT-001] Implementar sistema de autenticación JWT
+[FIX-002] Corregir validación de email en registro
+[REFACTOR-003] Optimizar consultas de base de datos
+[DOC-004] Actualizar documentación de API REST
+[TEST-005] Agregar tests unitarios para servicios
+
+# ❌ Incorrecto - Sin versionado o mal ubicado
+Implementar sistema de autenticación JWT [FEAT-001]
+feat: agregar autenticación (sin formato estandarizado)
+Cambios varios sin versionado
+```
+
+### Flujo de Versionado
+
+1. **Antes de cada commit**: Verifica el último número usado en ese tipo
+2. **Actualiza contador**: Incrementa el número correspondiente
+3. **Commit con versionado**: Incluye [TIPO-NNN] al inicio del mensaje
+4. **Documenta**: Actualiza `docs/commit-counter.txt` si existe
+
+### Herramientas de Apoyo
+
+- **Conventional Commits**: Estándar para mensajes estructurados
+- **Semantic Release**: Automatización de versionado y changelogs
+- **Commitizen**: CLI para generar commits convencionales
+- **Husky + Commitlint**: Validación automática de formato
+
+### Mejores Prácticas de Versionado
+
+- **Consistencia**: Siempre usa el mismo formato
+- **Precisión**: Elige el tipo correcto para cada cambio
+- **Claridad**: Descripción concisa pero descriptiva
+- **Secuencial**: Números incrementales sin saltos
+- **Documentado**: Mantén registro de números usados
+
 ## Sistema de Branches
 
 Branches permiten desarrollar en paralelo sin afectar el código principal. Usa una estrategia clara para identificar procesos fácilmente.
