@@ -146,6 +146,110 @@ El componente `home` implementa un flujo de 4 secciones que se generan dinámica
 - ✅ **Carrito dinámico** con total en tiempo real
 - ✅ **Interfaz modular** fácil de extender
 
+## Sistema de Filtros Avanzados
+
+### 🎯 Arquitectura Modular de Filtros
+
+La aplicación implementa un sistema de filtrado avanzado y modular que permite a los usuarios refinar su búsqueda de productos de manera intuitiva y eficiente.
+
+### 📁 Estructura de Filtros
+
+```
+src/public/app/home/
+├── scripts/
+│   ├── selectSupermarket.ts    # 🏪 Servicio de selección de supermercado
+│   └── filterProducts.ts       # 🔍 Servicio de filtrado de productos
+├── styles/
+│   ├── selectSupermarket.scss  # 🎨 Estilos de selección de supermercado
+│   └── filterProducts.scss     # 🎨 Estilos de filtros de productos
+├── home.html                   # 📄 Template principal
+├── home.scss                   # 🎨 Estilos principales
+└── home.ts                     # ⚙️ Lógica del componente
+```
+
+### 🔧 Funcionalidades de Filtrado
+
+#### Filtros por Categoría
+- **Frutas y Verduras** 🥕
+- **Carnes y Pescados** 🥩
+- **Lácteos** 🥛
+- **Panadería** 🍞
+- **Bebidas** 🥤
+- **Limpieza** 🧼
+- **Perfumería** 🧴
+
+#### Tipos de Producto por Categoría
+Cada categoría tiene tipos específicos:
+- **Frutas y Verduras**: Frutas Frescas, Verduras Frescas, Frutas Congeladas
+- **Carnes y Pescados**: Carne Vacuna, Aves, Pescados, Cerdo
+- **Lácteos**: Leche, Quesos, Yogures, Mantequilla
+- **Panadería**: Pan, Pastelería, Galletas
+- **Bebidas**: Gaseosas, Jugos, Agua, Café y Té
+- **Limpieza**: Detergentes, Limpiadores, Productos de Papel
+- **Perfumería**: Shampoos, Jabones, Desodorantes
+
+#### Subfiltros Dinámicos
+Los subfiltros se generan automáticamente según el tipo de producto seleccionado:
+
+##### Para Productos Frescos:
+- **Origen**: Nacional, Importado, Orgánico
+- **Temporada**: De estación, Fuera de temporada
+- **Rango de Precio**: Control deslizante
+
+##### Para Carnes:
+- **Corte**: Para guisar, Para asar, Para milanesa, Especial
+- **Peso**: Control deslizante de 0.5kg a 5kg
+- **Calidad**: Premium, Standard, Económico
+
+##### Para Lácteos:
+- **Tipo**: Entera, Descremada, Semi-descremada
+- **Marca**: La Serenísima, Sancor, Otro
+- **Tamaño**: 1L, 500ml, 200ml
+
+##### Para Panadería:
+- **Tipo de Pan**: Blanco, Integral, Centeno, Sin gluten
+- **Peso**: Control deslizante de 200g a 1000g
+
+##### Para Bebidas:
+- **Sabor**: Cola, Naranja, Limón, Otro
+- **Tamaño**: 500ml, 1.5L, 2.25L, 3L
+- **Marca**: Coca-Cola, Pepsi, Otro
+
+### 🎨 Características de la Interfaz
+
+#### Diseño Responsive
+- ✅ **Desktop**: Layout completo con múltiples columnas
+- ✅ **Tablet**: Adaptación a 2 columnas
+- ✅ **Mobile**: Diseño de una sola columna
+
+#### Estados Interactivos
+- ✅ **Hover effects** en todos los elementos
+- ✅ **Transiciones suaves** entre estados
+- ✅ **Feedback visual** en selecciones
+- ✅ **Estados de carga** y vacío
+
+#### Controles de Usuario
+- ✅ **Botón "Limpiar Filtros"** para resetear selecciones
+- ✅ **Botón "Aplicar Filtros"** para ejecutar búsqueda
+- ✅ **Navegación intuitiva** con breadcrumbs
+- ✅ **Indicador de progreso** del flujo de compra
+
+### 🔄 Integración con el Flujo de Compra
+
+1. **Selección de Supermercado** → Usuario elige tienda
+2. **Selección de Categoría** → Usuario elige tipo de producto
+3. **Aplicación de Filtros** → Usuario refina búsqueda ← **NUEVO**
+4. **Selección de Productos** → Usuario agrega al carrito
+5. **Carrito de Compras** → Usuario finaliza compra
+
+### 📊 Beneficios del Sistema
+
+✅ **Experiencia de Usuario Mejorada**: Filtros intuitivos y rápidos  
+✅ **Performance Optimizada**: Filtrado del lado del cliente  
+✅ **Escalabilidad**: Fácil agregar nuevas categorías y filtros  
+✅ **Mantenibilidad**: Código modular y bien estructurado  
+✅ **Accesibilidad**: Diseño inclusivo con navegación por teclado  
+
 ## Beneficios de la Estructura Actual
 
 ✅ **Sin duplicación**: Eliminadas carpetas innecesarias  

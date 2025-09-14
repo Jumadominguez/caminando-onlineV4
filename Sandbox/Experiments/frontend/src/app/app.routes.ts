@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { Home } from '../public/app/home/home';
+import { HomeComponent } from '../public/app/home/scripts/home';
 import { Login } from '../public/app/login/login';
 import { Register } from '../public/app/register/register';
 import { PrivateLoginComponent } from '../private/app/login/login';
@@ -9,7 +9,7 @@ export const routes: Routes = [
   { path: '', redirectTo: '/public/home', pathMatch: 'full' },
 
   // Public routes
-  { path: 'public/home', component: Home },
+  { path: 'public/home', component: HomeComponent },
   { path: 'public/login', component: Login },
   { path: 'public/register', component: Register },
 
