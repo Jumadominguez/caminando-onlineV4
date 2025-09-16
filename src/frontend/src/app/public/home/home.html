@@ -1,0 +1,53 @@
+<div class="home-container">
+  <header class="hero-section">
+    <div class="hero-content">
+      <div class="logo-section">
+        <h1 class="hero-title">Caminando Online</h1>
+      </div>
+      <div class="hero-buttons">
+        <button class="btn btn-secondary" (click)="onLogin()">Iniciar Sesión</button>
+        <button class="btn btn-primary" (click)="onRegister()">Crear Cuenta</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Sección de selección de supermercados -->
+  <main class="main-content">
+    <app-select-supermarket></app-select-supermarket>
+
+    <!-- Sección de filtros de productos -->
+    <app-filter-products></app-filter-products>
+  </main>
+</div>
+
+<footer class="footer">
+  <div class="footer-content">
+    <div class="footer-section">
+      <h3>Caminando Online</h3>
+      <p>Tu comparador de precios inteligente para supermercados en Argentina.</p>
+    </div>
+    <div class="footer-section">
+      <h4>Enlaces</h4>
+      <ul>
+        <li><a href="/about">Sobre Nosotros</a></li>
+        <li><a href="/contact">Contacto</a></li>
+        <li><a href="/faq">Preguntas Frecuentes</a></li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="/privacy">Política de Privacidad</a></li>
+        <li><a href="/terms">Términos de Servicio</a></li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h4>Contacto</h4>
+      <p>📧 info@caminandoonline.com</p>
+      <p>📱 +54 11 1234-5678</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2025 Caminando Online. Todos los derechos reservados.</p>
+  </div>
+</footer>

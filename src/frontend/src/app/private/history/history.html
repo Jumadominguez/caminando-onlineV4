@@ -1,0 +1,45 @@
+    <div class="history-container">
+      <header class="history-header">
+        <h1>Historial de Compras</h1>
+        <p>Revisa todas tus compras realizadas</p>
+      </header>
+
+      <div class="filters">
+        <select class="filter-select">
+          <option value="">Todos los supermercados</option>
+          <option value="carrefour">Carrefour</option>
+          <option value="disco">Disco</option>
+          <option value="dia">Día</option>
+          <option value="jumbo">Jumbo</option>
+          <option value="vea">Vea</option>
+        </select>
+
+        <input type="date" class="filter-date" placeholder="Fecha desde">
+        <input type="date" class="filter-date" placeholder="Fecha hasta">
+
+        <button class="btn btn-primary">Filtrar</button>
+      </div>
+
+      <div class="purchases-list">
+        <div class="purchase-card" *ngFor="let purchase of purchases">
+          <div class="purchase-header">
+            <h3>{{ purchase.supermarket }}</h3>
+            <span class="purchase-date">{{ purchase.date }}</span>
+          </div>
+          <div class="purchase-details">
+            <p class="purchase-total">Total: $ {{ purchase.total }}</p>
+            <p class="purchase-items">{{ purchase.itemsCount }} productos</p>
+          </div>
+          <div class="purchase-actions">
+            <button class="btn btn-secondary">Ver Detalles</button>
+            <button class="btn btn-outline">Descargar Recibo</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="pagination">
+        <button class="btn btn-outline">&laquo; Anterior</button>
+        <span class="page-info">Página 1 de 5</span>
+        <button class="btn btn-outline">Siguiente &raquo;</button>
+      </div>
+    </div>
